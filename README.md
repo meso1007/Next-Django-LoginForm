@@ -15,6 +15,9 @@ This project demonstrates a simple **user authentication system** built with **D
   - **Next.js**: React framework for building the user interface.
   - **Tailwind CSS**: For styling the components with utility-first CSS.
   - **Axios**: To make API requests to the Django backend.
+  - **Session Storage**: For client-side JWT token handling
+
+
 
 - **Backend**:
   - **Django**: Python framework for building the backend.
@@ -30,19 +33,19 @@ This project demonstrates a simple **user authentication system** built with **D
 
 The login page allows users to log in by entering their username and password. Upon successful authentication, a JWT token is generated and stored in sessionStorage.
 
-<img src="./public/images/readme/log-pic.png" alt="Login Page" width="600" height="auto" />
+<img src="./images/readme/log-pic.png" alt="Login Page" width="600" height="auto" />
 
 ### 2. **Dashboard**
 
 Once logged in, the user is redirected to the dashboard. The dashboard displays a welcome message with the username and a logout button. The user can log out to clear session storage and return to the login page.
 
-<img src="./public/images/readme/dash-pic.png" alt="Login Page" width="600" height="auto" />
+<img src="./images/readme/dash-pic.png" alt="Login Page" width="600" height="auto" />
 
 ### 3. **Registration Page**
 
 Users can register a new account by providing a unique username and password. The registration page allows the creation of new users, and upon success, the user can log in using the credentials they just created.
 
-<img src="./public/images/readme/reg-pic.png" alt="Login Page" width="600" height="auto" />
+<img src="./images/readme/reg-pic.png" alt="Login Page" width="600" height="auto" />
 
 ## Installation
 
@@ -150,3 +153,25 @@ Requires the access token to fetch user data. Returns user information like the 
 ├── /public               # Static files like images, icons
 └──
 ```
+
+### Setup Instructions
+**Backend**
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+**Frontend**
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+### Notes
+- Large files such as .mp4 videos and images should be added to .gitignore to avoid being tracked by Git.
+
+- Consider implementing the use of refresh_token to handle cases where the JWT access token expires — this will improve the scalability and robustness of your authentication system in the future!
